@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: row; 
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    list-style-type: none;
+}
+
+.nav-item {
+    padding: 15px;
+    cursor: pointer;
+}
+
+.nav-item a{
+    text-align: center;
+    text-decoration: none;
+}

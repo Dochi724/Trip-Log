@@ -1,0 +1,18 @@
+.header > h1 {
+    color:block;
+    text-align: center;
+}
+
+.all_write {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: white;  
+}
+
+.all_write > div {
+    width: 500px;
+    height: 500px;
+    border: 1px solid;
+    padding: 20px;
+}
+
