@@ -1,6 +1,43 @@
-.header > h1 {
-    color:block;
+@font-face {
+    font-family: 'S-CoreDream-9Black';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-9Black.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+}
+
+.main {
+    width: 100%;
+    height: 100vh;
+
+}
+
+.main > h1 {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'S-CoreDream-9Black';
+    color:red;
     text-align: center;
+    font-size: 90px;
+}
+
+.wrapper {
+    width: 330px;
+    height: 530px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.wrapper > img{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
 }
 
 .all_write {
@@ -13,6 +50,12 @@
     width: 500px;
     height: 500px;
     border: 1px solid;
-    padding: 20px;
+    margin: 20px;
 }
 
+footer > a {
+    font-family: 'S-CoreDream-3Light';
+    text-decoration: none;
+    color: black;
+    padding: 30px;
+}

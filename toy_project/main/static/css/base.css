@@ -1,8 +1,17 @@
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 body {
     margin: 0;
 }
 
 .nav-container {
+    position: fixed;
     display: flex;
     flex-direction: row; 
     width: 100%;
@@ -10,14 +19,17 @@ body {
     padding: 0;
     background-color: white;
     list-style-type: none;
+    justify-content: flex-end;
 }
 
 .nav-item {
     padding: 15px;
-    cursor: pointer;
+    cursor: pointer; 
 }
 
 .nav-item a{
+    color: black;
+    font-family: 'S-CoreDream-3Light';
     text-align: center;
     text-decoration: none;
 }
