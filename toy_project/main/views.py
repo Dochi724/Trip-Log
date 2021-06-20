@@ -13,7 +13,7 @@ def index(request):
 
 def create(request):
     if request.method == "POST":
-        create_form = WriteForm(request.POST)
+        create_form = WriteForm(request.POST,request.FILES)
         if create_form.is_valid():
             create_form.save()
             return redirect('index')
@@ -29,7 +29,7 @@ def detail(request, write_id):
 def update(request, write_id):
     my_write = get_object_or_404(Write, id=write_id)
     if request.method == "POST":
-        update_form = WriteForm(request.POST, instance=my_write)
+        update_form = WriteForm(request.POST,request.FILES,instance=my_write)
         if update_form.is_valid():
             update_form.save()
             return redirect('index')

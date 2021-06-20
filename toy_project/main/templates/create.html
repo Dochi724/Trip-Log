@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<form method="POST">
+<form method="POST", enctype="multipart/form-data">
   {% csrf_token %} {{write_form.as_p}}
 
   <input type="submit" value="제출" />
