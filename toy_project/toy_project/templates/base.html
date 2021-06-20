@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,15 +12,24 @@
     {% block extrahead %}
     {% endblock %}
 </head>
+
 <body>
     <nav>
         <ul class="nav-container">
-            <li class="nav-item"><a href="">Home</a></li>
-            <li class="nav-item"><a href="">Login</a></li>
-            <li class="nav-item"><a href="">Signup</a></li>
+            <li class="nav-item"><a href="{%url 'main:index' %}">Home</a></li>
+            {% if user.is_authenticated %}
+            {{user.username}} 님으로 로그인 되었습니다.
+            <li class="nav-item"><a href="{%url 'accounts:logout'%}">Logout</a></li>
+
+            {% else %}
+            <li class="nav-item"><a href="{%url 'accounts:login'%}">Login</a></li>
+            <li class="nav-item"><a href="{%url 'accounts:signup'%}">Signup</a></li>
+
+            {% endif %}
         </ul>
     </nav>
     {% block content %}
     {% endblock %}
 </body>
+
 </html>
