@@ -12,32 +12,37 @@
   <h1>TOYPROJECT</h1>
 </div>
 
-<div class="create">
-  <div class="create_write">
-    <div class="create_btn">
-      <a href="{% url 'main:create' %}">+ 글 작성하기</a>
-    </div>
-  </div>
-</div>
 <div class="write_wrapper">
   {% for write in all_write %}
   <a href="{% url 'main:detail' write.id %}">
     <div class="all_write">
-      <div>{{write.id}}</div>
-      <div>{{write.title}}</div>
-      <div>{{write.contents}}</div>
-      <div>{{write.updated_at|date:"Y.m.d"}}</div>
+      <div class="contents">
+        <div id="title">{{write.title}}</div>
+        
+        <hr noshade="" color="white" size="1.5">
+        <div id="content">{{write.contents}}</div>
+        <div id="date">{{write.updated_at|date:"Y.m.d"}}</div>
+      </div>
+      
       {% if write.images %}
       <img src="{{write.images.url}}">
       {% endif %}
     </div>
   </a>
   {%endfor%}
+  
+  <div class="create">
+    <div class="create_write">
+      <div class="create_btn">
+        <button><a href="{% url 'main:create' %}">NEW POST</a></button>
+      </div>
+    </div>
+  </div>
+  <hr noshade="" color="black" size="1.5">
+  <footer>
+    <a href="mailto:">Contact Us</a>
+  </footer>
 </div>
-<!-- 게시글(Write 클래스 필드) -->
 
-<footer>
-  <a href="mailto:">Contact Us</a>
-</footer>
 
 {% endblock %}

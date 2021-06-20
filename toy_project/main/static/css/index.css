@@ -5,14 +5,21 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'S-CoreDream-6Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     margin: 0;
 }
 
+/* 메인화면 */
 .main {
     width: 100%;
     height: 100vh;
-
 }
 
 .main > h1 {
@@ -23,11 +30,11 @@ body {
     font-family: 'S-CoreDream-9Black';
     color:red;
     text-align: center;
-    font-size: 90px;
+    font-size: 100px;
 }
 
 .wrapper {
-    width: 330px;
+    width: 370px;
     height: 530px;
     position: absolute;
     top: 50%;
@@ -36,26 +43,98 @@ body {
 }
 .wrapper > img{
     width: 100%;
-    height: 100%;
+    height: 100;
     object-fit: fill;
 }
 
-.all_write {
+/* 글 화면 */
+.write_wrapper {
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-flow: row wrap;
-    background-color: white;  
+    background-color: white; 
+    justify-content: center; 
 }
 
-.all_write > div {
-    width: 500px;
-    height: 500px;
-    border: 1px solid;
+.write_wrapper >a {
+    width: 25%;
     margin: 20px;
+}
+
+.contents {
+    z-index: 2;
+    color: white;
+    position: absolute;
+    align-items: center;
+    width: 25%;
+}
+
+#title {
+    font-size: 14px;
+    font-family: 'S-CoreDream-6Bold';
+}
+
+#content {
+    font-size: 14px;
+    font-family: 'S-CoreDream-3Light';
+}
+
+#date {
+    font-size: 12px;
+    font-family: 'S-CoreDream-3Light';
+}
+
+#title, #date, #content{
+    margin: 7px;
+}
+
+.all_write > img {
+    z-index: 1;
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+
+.all_write > img:hover {
+    filter: brightness(50%);
+}
+
+hr {
+    width: 96%;
+    align-items: center;
+}
+
+.create {
+    width: 100%;
+}
+
+button > a{
+    text-decoration: none;
+    color: white;
+    font-family: 'S-CoreDream-6Bold';
+    font-size: 16px;
+}
+
+button {
+    border: 0;
+    outline: 0;
+    background-color: black;
+    width: 120px;
+    height: 40px;
+    margin-left: 90%;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+
+footer {
+    width: 100%;
+    margin-top: auto;
 }
 
 footer > a {
     font-family: 'S-CoreDream-3Light';
     text-decoration: none;
     color: black;
-    /* padding: 30px; */
+    padding: 30px;
 }

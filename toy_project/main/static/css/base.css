@@ -11,7 +11,6 @@ body {
 }
 
 .nav-container {
-    position: fixed;
     display: flex;
     flex-direction: row; 
     width: 100%;
