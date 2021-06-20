@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-import os, json
+import os
+import json
 
 from django.core.exceptions import ImproperlyConfigured
 from pathlib import Path
@@ -18,11 +19,12 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#to get SECRET_KEY
+# to get SECRET_KEY
 secret_file = os.path.join(BASE_DIR, 'secret.json')
 
 with open(secret_file) as f:
     secret = json.loads(f.read())
+
 
 def get_secret(setting, secret=secret):
     try:
@@ -30,6 +32,8 @@ def get_secret(setting, secret=secret):
     except KeyError:
         error_msg = "Set the {} environment variable".format(setting)
         raise ImproperlyConfigured(error_msg)
+
+
 SECRET_KEY = get_secret("SECRET_KEY")
 
 
@@ -116,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 

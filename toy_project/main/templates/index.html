@@ -1,32 +1,40 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block extrahead %}
 
-{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}" />
 
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
-
-{% endblock %}
-
-{% block title %}title{% endblock %}
-
-{% block content %}
+{% endblock %} {% block title %}title{% endblock %} {% block content %}
 
 <div class="main">
-    <div class="wrapper">
-        <img src="{%static 'images/main.jpg'%}" alt="">
-    </div>
-    
-    <h1>TOYPROJECT</h1>
+  <div class="wrapper">
+    <img src="{%static 'images/main.jpg'%}" alt="" />
+  </div>
+
+  <h1>TOYPROJECT</h1>
 </div>
 
-<div class="all_write">
-    <div>
-            <!-- 게시글(Write 클래스 필드) -->
-    </div>     
+<div class="create">
+  <div class="create_write">
+    <a href="{%url 'main:create'%}">
+      <div class="create_btn">+ 글 작성하기</div>
+    </a>
+  </div>
 </div>
+<div class="write_wrapper">
+  {% for write in all_write %}
+  <a href="{% url 'main:detail' write.id %}">
+    <div class="all_write">
+      <div>{{write.id}}</div>
+      <div>{{write.title}}</div>
+      <div>{{write.contents}}</div>
+      <div>{{write.updated_at|date:"Y.m.d"}}</div>
+    </div>
+  </a>
+  {%endfor%}
+</div>
+<!-- 게시글(Write 클래스 필드) -->
 
 <footer>
-    <a href="mailto:">Contact Us</a>
+  <a href="mailto:">Contact Us</a>
 </footer>
 
 {% endblock %}
