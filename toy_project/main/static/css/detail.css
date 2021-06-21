@@ -46,7 +46,7 @@ img {
     font-family: 'S-CoreDream-3Light';
 }
 
-#title {
+#title, .comments > #username {
     font-family: 'S-CoreDream-6Bold';
     font-size: 20px;
 }
@@ -54,14 +54,68 @@ img {
 #date {
     color: gray;
     clear:both;
-    float:left;
-    font-size: 15px; 
+    float:left; 
+    font-size: 14px; 
 }
 
-.content > a > button {
+#button > a > button {
     border: 0;
     outline: 0;
     background-color: white;
     font-family: 'S-CoreDream-3Light';
     color: gray;
+    font-size: 15px;
+    float:right;
+    cursor: pointer; 
+}
+
+.comments, .create_comments {
+    width: 80%;
+    align-self: center;
+    margin-left: 50%;
+    margin-top: 70px;
+    transform: translate(-50%)
+}
+
+.comments > #comment_time, #delete_button > a {
+    text-decoration: none;
+    color: gray;
+    font-family: 'S-CoreDream-3Light';
+    font-size: 15px;
+}
+
+#delete_button {
+    clear:both;
+    float:right;
+}
+
+.create_comments > form{
+    width: 100%;
+    height: 300px;
+}
+
+input {
+    width: 85%;
+    height: 100px;
+}
+
+#create_button > button {
+    color: white;
+    border: 0;
+    background-color: black;
+    width: 10%;
+    height: 40px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+#create_button > button > img{
+    height: 80%;
+    width: 80%;
+    object-fit: contain;
+}
+
+#comment {
+    font-family: 'S-CoreDream-3Light';
+    color: black;
 }
