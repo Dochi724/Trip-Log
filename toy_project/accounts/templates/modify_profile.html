@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="POST">
+        {% csrf_token%}
+        {{ modify_form.as_p }}
+        <!-- <input type="text" value="{{user.pro.nickname}}" name="nickname">
+        <input type="text" value="{{user.pro.gender}}" name="gender">
+        <input type="text" value="{{user.pro.phone_number}}" name="phone_number"> -->
+        <button type="submit">프로필 편집</button>
+    </form>
+</body>
+
+</html>
