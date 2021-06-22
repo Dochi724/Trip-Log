@@ -1,5 +1,11 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} 
+{% block extrahead %}
 
+<link rel="stylesheet" href="{% static 'css/map.css' %}" >
+
+{% endblock %}
+{% block content %}
+<p>키워드 검색 후 지도를 클릭하세요!</p> 
 <style>
     .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
     .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
@@ -59,7 +65,7 @@
     </div>
   
   
-    <p><em>지도를 클릭해주세요!</em></p> 
+
     <div id="result"></div>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e4629dfd6293cb3c36858f5010d2a71e&libraries=services"></script>
     <script>
