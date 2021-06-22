@@ -18,3 +18,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.post.title
+
+class Map(models.Model):
+    objects = models.Manager()
+    input_memo = models.CharField(max_length=200, null=True)
+    lat=models.DecimalField(max_digits=9,decimal_places=6, null=True)
+    lon=models.DecimalField(max_digits=9,decimal_places=6, null=True)
+    placename=models.CharField(max_length=100 , null=True)
+    post=models.ForeignKey(Write,related_name="report",on_delete=CASCADE,null=True)

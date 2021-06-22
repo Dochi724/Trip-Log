@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import WriteForm, CommentForm
-from .models import Write, Comment
+from .models import Write, Comment, Map
 from django.contrib.auth.models import User
 from accounts.models import Profile
+from django.http.response import HttpResponse
 
 
 # Create your views here.
@@ -30,7 +31,8 @@ def detail(request, write_id):
     my_write = get_object_or_404(Write, pk=write_id)
     comment_form = CommentForm()
     comments = Comment.objects.filter(post=write_id)
-    return render(request, 'detail.html', {'my_write': my_write, 'comment_form': comment_form, 'comments': comments, 'user': user})
+    map = Map.objects.filter(post=write_id)
+    return render(request, 'detail.html', {'my_write': my_write, 'comment_form': comment_form, 'comments': comments, 'user': user, 'map':map })
 
 
 def update(request, write_id):
@@ -67,3 +69,19 @@ def delete_comment(request, write_id, comment_id):
     my_comment = get_object_or_404(Comment, id=comment_id)
     my_comment.delete()
     return redirect("main:detail", write_id)
+
+def page(request,write_id):
+    my_write = get_object_or_404(Write, id=write_id)
+    return render(request, 'map.html', {'my_write': my_write})
+
+def map(request, write_id):
+    my_write=get_object_or_404(Write,id=write_id)
+    if request.method =="POST":
+        map=Map()     
+        map.lat = request.POST['lat']
+        map.lon = request.POST['lon']
+        map.placename = request.POST['placename']
+        map.post = Write.objects.get(id=write_id)
+        map.save()
+        return HttpResponse(content_type='application/json')
+    
