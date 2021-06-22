@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'S-CoreDream-9Black';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-9Black.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     margin: 0;
 }
@@ -112,5 +119,18 @@ input {
 
 #comment {
     font-family: 'S-CoreDream-3Light';
+}
+
+#place {
+    font-family: 'S-CoreDream-3Light';
+    margin: 40px;
+    font-size: 16px;
     color: black;
+}
+
+#place > p {
+    font-family: 'S-CoreDream-9Black';
+    margin-bottom: 0;
+    margin-top: 100px;
+    font-size: 20px;
 }

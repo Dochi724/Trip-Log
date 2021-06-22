@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.conf.urls import include
 
 app_name = 'main'
 
@@ -13,4 +14,5 @@ urlpatterns = [
     path('delete_comment/<int:write_id>/<int:comment_id>', views.delete_comment, name='delete_comment'),
     path('map/<int:write_id>', views.map, name="map"),
     path('page/<int:write_id>', views.page, name="page"),
+
 ]

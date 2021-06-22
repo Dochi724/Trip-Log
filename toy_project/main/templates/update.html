@@ -2,16 +2,18 @@
 
 {% block extrahead %}
 
-<link rel="stylesheet" href="{% static 'css/index.css' %}" >
+<link rel="stylesheet" href="{% static 'css/update.css' %}" >
 
 {% endblock %}
 
 {% block content %}
-<form method="POST">
-  {% csrf_token %} 
-  {{update_form.as_p}}
-
-  <input type="submit" value="제출" />
-</form>
+<div class="container">
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %} 
+    {{update_form.media}}
+    {{update_form.as_p}}
+    <div id="upload"><input type="submit" value="UPDATE" /></div>
+  </form>
+</div>
 
 {% endblock %}

@@ -1,5 +1,6 @@
 from django import forms
 from django.db.models import fields
+from django import forms
 from .models import Write, Comment  # 나중에 작업할 때 comments 추가
 
 

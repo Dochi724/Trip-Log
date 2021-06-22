@@ -12,8 +12,12 @@
 {% block content %}
     <div class="container">
         <h1>Create<br>New Profile!</h1>
-        {% csrf_token%}
-        {{profile_form.as_p}}
-        <button type="submit">SAVE</button>
+        <form method="POST">
+            {% csrf_token%}
+            {{profile_form.as_p}}
+            
+            <button type="submit">SAVE</button>
+        </form>
+        
     </div>
 {% endblock %}
