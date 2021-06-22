@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %} 
+{% load static %} 
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% block extrahead %}
 
-<body>
-    <form method="POST">
+<link rel="stylesheet" href="{% static 'css/create_profile.css' %}">
+
+{% endblock %} 
+
+{% block title %}create_profile{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Create<br>New Profile!</h1>
         {% csrf_token%}
         {{profile_form.as_p}}
-        <button type="submit">프로필 생성</button>
-    </form>
-</body>
-
-</html>
+        <button type="submit">SAVE</button>
+    </div>
+{% endblock %}
