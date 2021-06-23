@@ -138,3 +138,13 @@ footer > a {
     color: black;
     padding: 30px;
 }
+.contents > .heart {
+    font-family: 'S-CoreDream-3Light';
+    font-size: 12px;
+    margin: 0;
+}
+
+.contents > .heart> img {
+    width: 15px;
+    margin-left: 5px;
+}

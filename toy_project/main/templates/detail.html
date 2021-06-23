@@ -25,26 +25,34 @@
 
         <hr noshade="" color="black" size="1.5">
         <div id="content">{{my_write.contents}}</div>
-
+        <div class="like">
+          <a href="{% url 'main:post_like_toggle' my_write.id %}">
+      
+            {% if my_write in profile.like_post.all %}
+            <img id="empty_heart" src="{%static 'images/empty_heart.png'%}">
+            {% else %}
+            <img id="heart" src="{%static 'images/heart.png'%}">
+            {% endif %}
+          </a>
+          <span>{{my_write.like_count}}</span> 
+        </div>
       </div>
     </div>
   </div>
-
+  
+  {% if map%}
   <div id="place">
     <p>TRAVEL ROUTE</p>
     {% for map in map.all %}
     <tr>
-      <td>{{ map.placename }}</td> >
-
+      <td>{{ map.placename }} > </td>
     </tr>
     {% endfor %}
   </div>
   <div id="map" style="width:100%;height:400px;"></div>
-  <script type="text/javascript"
-    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e4629dfd6293cb3c36858f5010d2a71e&libraries=services"></script>
-    <script>
-  
- 
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e4629dfd6293cb3c36858f5010d2a71e&libraries=services"></script>
+  {%endif%}
+  <script>
       // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
       var infowindow = new kakao.maps.InfoWindow({zIndex:1});
        
@@ -53,20 +61,20 @@
               center: new kakao.maps.LatLng(37.539448, 126.987477), // 지도의 중심좌표
               level: 3 // 지도의 확대 레벨
           };  
-          var map = new kakao.maps.Map(mapContainer, mapOption); 
-          var infowindow = new kakao.maps.InfoWindow({zIndex:1});
-          var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-          var bounds = new kakao.maps.LatLngBounds();
+      var map = new kakao.maps.Map(mapContainer, mapOption); 
+      var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+      var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+      var bounds = new kakao.maps.LatLngBounds();
       
-          var positions =[
-              {% for i in map %}
-              {
+      var positions =[
+          {% for i in map %}
+             {
                   lat : {{i.lat}},
                   lon : {{i.lon}},
                   title : '{{i.placename}}',
                   latlng : new kakao.maps.LatLng({{i.lat}},{{i.lon}})
                 },
-              {% endfor %}
+            {% endfor %}
           ]; 
                
       
@@ -96,21 +104,6 @@
       
       
       </script>
-
-  
-
-  <div class="like">
-    <p> {{my_write.like_count}}</p>
-    <a href="{% url 'main:post_like_toggle' my_write.id %}">
-
-      {% if my_write in profile.like_post.all %}
-      💜취소
-      {% else %}
-      🤍좋아요
-      {% endif %}
-    </a>
-
-  </div>
 
   <div class="comments">
     {% for comment in comments %}

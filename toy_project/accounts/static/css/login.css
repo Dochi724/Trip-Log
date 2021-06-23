@@ -55,3 +55,14 @@ button {
     font-family: 'S-CoreDream-9Black';
     cursor: pointer; 
 }
+
+.social_login > a > img{
+    border-radius: 10px;
+    height: 38px;
+    width: 150px;
+    margin-right: 2px;
+}
+
+.social_login {
+    display: flex;
+}

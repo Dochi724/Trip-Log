@@ -18,11 +18,15 @@
     <div class="all_write">
       <div class="contents">
         <div id="title">{{write.title}}</div>
+        
 
         <hr noshade="" color="white" size="1.5">
         <div id="content">{{write.contents}}</div>
         <div id="date">{{write.updated_at|date:"Y.m.d"}}</div>
-        <div>💜{{write.like_count}}</div>
+        <div class="heart">
+          <img src="{%static 'images/heart.png'%}"></span>
+          {{write.like_count}}
+        </div>
       </div>
 
       {% if write.images %}

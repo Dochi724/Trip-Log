@@ -34,6 +34,7 @@ label {
     font-family: 'S-CoreDream-9Black';
     font-size: 15px;
     margin-left: 50%;
+    cursor: pointer; 
 }
 
 .container > form > p > input {
