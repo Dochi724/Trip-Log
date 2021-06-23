@@ -29,9 +29,9 @@
           <a href="{% url 'main:post_like_toggle' my_write.id %}">
       
             {% if my_write in profile.like_post.all %}
-            <img id="empty_heart" src="{%static 'images/empty_heart.png'%}">
-            {% else %}
             <img id="heart" src="{%static 'images/heart.png'%}">
+            {% else %}
+            <img id="empty_heart" src="{%static 'images/empty_heart.png'%}">
             {% endif %}
           </a>
           <span>{{my_write.like_count}}</span> 

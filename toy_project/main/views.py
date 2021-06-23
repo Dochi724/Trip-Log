@@ -39,7 +39,7 @@ def detail(request, write_id):
     comment_form = CommentForm()
     comments = Comment.objects.filter(post=write_id)
     map = Map.objects.filter(post=write_id)
-    return render(request, 'detail.html', {'my_write': my_write, 'comment_form': comment_form, 'comments': comments, 'user': user, 'map': map})
+    return render(request, 'detail.html', {'my_write': my_write, 'comment_form': comment_form, 'comments': comments, 'user': user, 'map': map, 'profile':profile})
 
 
 def update(request, write_id):
