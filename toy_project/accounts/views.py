@@ -6,7 +6,7 @@ from django.contrib import auth
 from .forms import ProfileForm
 
 
-def signup(request):
+def signup(request, backend='django.contrib.auth.backends.ModelBackend'):
     if request.method == 'POST':
 
         if request.POST['password1'] == request.POST['password2']:
@@ -16,7 +16,8 @@ def signup(request):
 
             user.save()
 
-            auth.login(request, user)
+            auth.login(request, user,
+                       backend='django.contrib.auth.backends.ModelBackend')
             return redirect('main:index')
     else:
 
@@ -29,7 +30,8 @@ def login(request):
         password = request.POST['password']
         user = auth.authenticate(request, username=username, password=password)
         if user is not None:
-            auth.login(request, user)
+            auth.login(request, user,
+                       backend='django.contrib.auth.backends.ModelBackend')
             return redirect('main:index')
         else:
             return render(request, 'login.html')
@@ -58,13 +60,14 @@ def create_profile(request):
 
 
 def modify_profile(request, pk):
-    my_profile = Profile.objects.get(pk=pk)
+    user = request.user
+    my_profile = Profile.objects.get(user=user)
 
     if request.method == "POST":
         modify_form = ProfileForm(request.POST, instance=my_profile)
         if modify_form.is_valid():
             modify_form = modify_form.save(commit=False)
-            modify_form.user = request.user
+            modify_form.user = user
             modify_form.save()
             return redirect('main:index')
     else:

@@ -1,29 +1,36 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
+{% load socialaccount %}
 
 {% block extrahead %}
 
 <link rel="stylesheet" href="{% static 'css/login.css' %}">
 
-{% endblock %} 
+{% endblock %}
 
 {% block title %}login{% endblock %}
 
 {% block content %}
 <div class="login">
-   <div class="container">
-    <h1>Welcome!</h1>
-    <form method="POST" action="{% url 'accounts:login' %}">
-        {% csrf_token %}
-        <label for="username">Username</label><br>
-        <input type="text" name="username"><br>
+    <div class="container">
+        <h1>Welcome!</h1>
+        <form method="POST" action="{% url 'accounts:login' %}">
+            {% csrf_token %}
+            <label for="username">Username</label><br>
+            <input type="text" name="username"><br>
 
-        <label for="password">Password</label><br>
-        <input type="password" name="password">
+            <label for="password">Password</label><br>
+            <input type="password" name="password">
 
-        <button type="submit">LOGIN</button>
-    </form>
-</div> 
+            <button type="submit">LOGIN</button><br><br>
+            <div class="social_login">
+                <a href="{% provider_login_url 'kakao' %}"><img src="{%static 'images\kakao.png'%}" width="100%px">
+                </a><br><br>
+                <a href="{% provider_login_url 'naver' %}"><img src="{%static 'images\naver.png'%}" width="100%px">
+                </a>
+            </div>
+        </form>
+    </div>
 </div>
 
 {% endblock %}

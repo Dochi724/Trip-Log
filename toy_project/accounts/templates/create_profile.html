@@ -1,23 +1,22 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
 
 {% block extrahead %}
 
 <link rel="stylesheet" href="{% static 'css/create_profile.css' %}">
 
-{% endblock %} 
+{% endblock %}
 
 {% block title %}create_profile{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>Create<br>New Profile!</h1>
-        <form method="POST">
-            {% csrf_token%}
-            {{profile_form.as_p}}
-            
-            <button type="submit">SAVE</button>
-        </form>
-        
-    </div>
+<div class="container">
+    <h1>Create<br>New Profile!</h1>
+    <form method="POST">
+        {% csrf_token%}
+        {{profile_form.as_p}}
+        <button type="submit">SAVE</button>
+    </form>
+
+</div>
 {% endblock %}

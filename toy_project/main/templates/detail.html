@@ -1,8 +1,8 @@
-{% extends 'base.html' %} {% load static %} 
+{% extends 'base.html' %} {% load static %}
 
 {% block extrahead %}
 
-<link rel="stylesheet" href="{% static 'css/detail.css' %}" >
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
 
 {% endblock %}
 {% block content %}
@@ -19,104 +19,117 @@
         <div id="title">{{my_write.title}}</div>
         <div id="date">{{my_write.updated_at}}</div>
         <div id="button"><a href="{%url 'main:update' my_write.id %}"><button>| 수정</button></a>
-        <a href="{%url 'main:delete' my_write.id %}"><button>| 삭제</button></a>
-        <a href="{%url 'main:page' my_write.id %}"><button>| 지도추가</button></a><br></div>
- 
+          <a href="{%url 'main:delete' my_write.id %}"><button>| 삭제</button></a>
+          <a href="{%url 'main:page' my_write.id %}"><button>| 지도추가</button></a><br>
+        </div>
+
         <hr noshade="" color="black" size="1.5">
         <div id="content">{{my_write.contents}}</div>
-        
+
       </div>
     </div>
   </div>
-    
-<div id="place">
-  <p>TRAVEL ROUTE</p>
-  {% for map in map.all %}
-  <tr>
-    <td>{{ map.placename }}</td> >
 
-  </tr>
-  {% endfor %}
-</div>
+  <div id="place">
+    <p>TRAVEL ROUTE</p>
+    {% for map in map.all %}
+    <tr>
+      <td>{{ map.placename }}</td> >
+
+    </tr>
+    {% endfor %}
+  </div>
   <div id="map" style="width:100%;height:400px;"></div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e4629dfd6293cb3c36858f5010d2a71e&libraries=services"></script>
+  <script type="text/javascript"
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e4629dfd6293cb3c36858f5010d2a71e&libraries=services"></script>
 
 
- <script>
-// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+  <script>
+    // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+    var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
 
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = {
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+      mapOption = {
         center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
-    };  
+      };
 
-// 지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption); 
+    // 지도를 생성합니다    
+    var map = new kakao.maps.Map(mapContainer, mapOption);
 
-// 장소 검색 객체를 생성합니다
-var ps = new kakao.maps.services.Places(); 
+    // 장소 검색 객체를 생성합니다
+    var ps = new kakao.maps.services.Places();
 
-// 키워드로 장소를 검색합니다
-ps.keywordSearch('이태원 맛집', placesSearchCB); 
+    // 키워드로 장소를 검색합니다
+    ps.keywordSearch('이태원 맛집', placesSearchCB);
 
-// 키워드 검색 완료 시 호출되는 콜백함수 입니다
-function placesSearchCB (data, status, pagination) {
-    if (status === kakao.maps.services.Status.OK) {
+    // 키워드 검색 완료 시 호출되는 콜백함수 입니다
+    function placesSearchCB(data, status, pagination) {
+      if (status === kakao.maps.services.Status.OK) {
 
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         var bounds = new kakao.maps.LatLngBounds();
 
-        for (var i=0; i<data.length; i++) {
-            displayMarker(data[i]);    
-            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-        }       
+        for (var i = 0; i < data.length; i++) {
+          displayMarker(data[i]);
+          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+        }
 
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
-    } 
-}
+      }
+    }
 
-// 지도에 마커를 표시하는 함수입니다
-function displayMarker(place) {
-    
-    // 마커를 생성하고 지도에 표시합니다
-    var marker = new kakao.maps.Marker({
+    // 지도에 마커를 표시하는 함수입니다
+    function displayMarker(place) {
+
+      // 마커를 생성하고 지도에 표시합니다
+      var marker = new kakao.maps.Marker({
         map: map,
-        position: new kakao.maps.LatLng(place.y, place.x) 
-    });
+        position: new kakao.maps.LatLng(place.y, place.x)
+      });
 
-    // 마커에 클릭이벤트를 등록합니다
-    kakao.maps.event.addListener(marker, 'click', function() {
+      // 마커에 클릭이벤트를 등록합니다
+      kakao.maps.event.addListener(marker, 'click', function () {
         // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
         infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
         infowindow.open(map, marker);
-    });
-}
-</script>
+      });
+    }
+  </script>
 
-    
+  <div class="like">
+    <p> {{my_write.like_count}}</p>
+    <a href="{% url 'main:post_like_toggle' my_write.id %}">
 
-<div class="comments">
-  {% for comment in comments %}
-  <span id="username">{{comment.user}}</span>
-  <span id="comment_time">| {{comment.updated_at}}</span>
-  <div id="comment">{{comment.content}}</div>
-  <div id="delete_button"><a href="{% url 'main:delete_comment' my_write.id comment.id%}">삭제</a></div><br>
-  <hr>
-  <br><br>
-  {%endfor%}
-</div>
-<div class="create_comments">
-  {% if user.is_authenticated %}
-  <form method="POST" action="{% url 'main:create_comment' my_write.id %}">
+      {% if my_write in profile.like_post.all %}
+      💜취소
+      {% else %}
+      🤍좋아요
+      {% endif %}
+    </a>
+
+  </div>
+
+  <div class="comments">
+    {% for comment in comments %}
+    <span id="username">{{comment.user}}</span>
+    <span id="comment_time">| {{comment.updated_at}}</span>
+    <div id="comment">{{comment.content}}</div>
+    <div id="delete_button"><a href="{% url 'main:delete_comment' my_write.id comment.id%}">삭제</a></div><br>
+    <hr>
+    <br><br>
+    {%endfor%}
+  </div>
+  <div class="create_comments">
+    {% if user.is_authenticated %}
+    <form method="POST" action="{% url 'main:create_comment' my_write.id %}">
       {% csrf_token %}
       {{comment_form}}
-  <span id="create_button"><button type="submit"><img src="{%static 'images/plane.png'%}"></button></span>
-  </form>
-  {%endif%}  
-</div>
+      <span id="create_button"><button type="submit"><img src="{%static 'images/plane.png'%}"></button></span>
+    </form>
+    {%endif%}
+  </div>
 
-{% endblock %}
+  {% endblock %}

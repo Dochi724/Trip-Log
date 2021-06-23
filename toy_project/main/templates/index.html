@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% block extrahead %}
 
-<link rel="stylesheet" href="{% static 'css/index.css' %}" >
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 
 {% endblock %} {% block title %}title{% endblock %} {% block content %}
 
@@ -18,24 +18,27 @@
     <div class="all_write">
       <div class="contents">
         <div id="title">{{write.title}}</div>
-        
+
         <hr noshade="" color="white" size="1.5">
         <div id="content">{{write.contents}}</div>
         <div id="date">{{write.updated_at|date:"Y.m.d"}}</div>
+        <div>💜{{write.like_count}}</div>
       </div>
-      
+
       {% if write.images %}
       <img src="{{write.images.url}}">
       {% endif %}
     </div>
   </a>
   {%endfor%}
-  
+
   <div class="create">
     <div class="create_write">
+      {% if user.pro.nickname %}
       <div class="create_btn">
         <button><a href="{% url 'main:create' %}">NEW POST</a></button>
       </div>
+      {% endif %}
     </div>
   </div>
   <footer>

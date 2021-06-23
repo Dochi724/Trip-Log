@@ -14,3 +14,8 @@ class Profile(models.Model):
     )
     gender = models.CharField(max_length=4, choices=GENDER_CHOICES)
     phone_number = models.CharField(max_length=14)
+    like_post = models.ManyToManyField(
+        'main.Write', related_name='like_users', null=True, blank=True)
+
+    def __str__(self):
+        return str(self.user)
